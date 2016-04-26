@@ -31,7 +31,7 @@ void changedp(int amount, int d[], int size, int C[], int s[], FILE *fp)
 {  
 	
 	int min, coin;
-	int a, i, j;
+	int a, i, p;
 	int O[size];
 	for(a=0; a<=size;a++){
 		
@@ -39,20 +39,20 @@ void changedp(int amount, int d[], int size, int C[], int s[], FILE *fp)
 		
 	}
 	C[0] = 0;
-    for(j = 1; j <= amount; j++) {
-	C[j] = INT_MAX;
+    for(p = 1; p <= amount; p++) {
+	C[p] = INT_MAX;
 	//min = 9999;
 	for(i = 0; i < size; i++) {
-	    if(j >= d[i]){ 
-			if((1 + C[j-d[i]]) < C[j] ) {
-				min = 1 + C[j - d[i]];
+	    if(p >= d[i]){ 
+			if((1 + C[p-d[i]]) < C[p] ) {
+				min = 1 + C[p - d[i]];
 				coin = i;
 			}
 			}
 		 
 	
-	C[j] = min; 
-	s[j] = coin;
+	C[p] = min; 
+	s[p] = coin;
 	}
   }
    fprintf(fp, "%d%s %d%s ", amount, ",", C[amount], ",");
@@ -94,8 +94,8 @@ int size = sizeof(d)/sizeof(d[0]);
 		end_time = clock();
 		total_time =((float)end_time - (float)start_time)/CLOCKS_PER_SEC;
 		fprintf(fp1, " %ld\n", total_time );
-    free(C);
-    free(s);
+		free(C);
+		free(s);
 
 
 int e[4] = {1, 3, 7, 12};
@@ -166,7 +166,7 @@ fprintf(fp1, "%s", "A, m, coins, time\n");
 }
 
 
-
+//report problem 5
 void problem5(){
 FILE* fp1;
 float total_time;
@@ -215,6 +215,7 @@ int e[] = {1,6,13,37,150};
 fclose(fp1);	
 }
 
+//report problem 6
 void problem6(){
 FILE* fp1;
 float total_time;
