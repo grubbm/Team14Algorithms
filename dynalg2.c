@@ -6,51 +6,27 @@
 
 
 void changedp(int* O, int *V, int C, int size);
-int* arraySet(char str[], FILE* fp, int* count2);
+int* arraySet(char str[], int* count2);
+void problem4();
+void problem5();
+void problem6();
 
-void main(){
-	
-	clock_t timer;
-	double time_spent;
-	time_t t;
-	int c, num, i;
-	char strng[1000];
-	int max;
-	FILE *fp1, *fp2;
-	int *arr;
-	int k;
-	int count3;
-	int *count1 = &count3;
-	char *str2;
 
-	fp1 = fopen("TestProblems.txt", "r");
-		int counter = 0;  // incrementer to work through file 
-		while(fgets(strng, 1000, fp1) != NULL){
-			if(counter % 2 == 0){
-				arr = arraySet(strng, fp1, count1);
-			}
-			else{
-				sscanf(strng, "%d", &num);
-				int	size = *count1-1;
-				int *B = (int*)malloc(sizeof(int)*size+1);
-				for(i = 0; i < *count1; i++){
-					
-					B[i] = 0;
-				}
-				timer = clock();
-				changedp(B, arr, num, size);
-				timer = clock() - timer; 
-				printf("changedp Time: %ld\n", timer/CLOCKS_PER_SEC);
-			}
-			counter++;
-		}
-	fclose(fp1);
+int main(){
 	
+
+//problem4();
+//problem5();
+problem6();
+
+	return 0; 
   
 }
 
 void changedp(int* O, int* V, int A, int size){
 	
+	 
+
 	int *C = malloc(A * sizeof(int)); 
 	int *S = malloc(A * sizeof(int)); 
 
@@ -72,25 +48,25 @@ void changedp(int* O, int* V, int A, int size){
 		S[p] = coin;
 	}
 
-	
+	//fprintf(fp3, "%i %s %i %s", A,",", C[A], ",");
 	printf("m for %d: %d\n", A, C[A]);
       
 	while (A > 0){
 	        O[S[A]]++;
 		A = A - V[S[A]];
 	}
-	printf("[");
+	//fprintf(fp3, "%s","[");
 	for(i = 0; i <= size; i++){
-	        printf("%d,", O[i]);
+	        printf("%d ", O[i]);
         }
 
-	printf("]\n");
+	//fprintf(fp3, "%s", "]");
 
-
+	
 }
 
 /*Function to set arrays from data read from file*/
-int* arraySet(char str[], FILE* fp, int* count2){
+int* arraySet(char str[],int* count2){
 	
 	//char str[1000];
 	char *str1, *str2;
@@ -99,7 +75,7 @@ int* arraySet(char str[], FILE* fp, int* count2){
 	int count = 0;
 	int sum = 0;
 
-	printf("%s",str);
+//	printf("%s",str);
 //	printf("%i\n", strlen(str));
 
 	str1 = str;  //assigns to str1 for getting count
@@ -123,4 +99,165 @@ int* arraySet(char str[], FILE* fp, int* count2){
    
 	*count2 = count;
 	return arr1;
+}
+
+
+//Report Problem #4 	
+void problem4(){
+	char strng[1000];
+	FILE *fp1, *fp2, *fp3;
+	int *arr;
+	int count3;
+	int *count1 = &count3;
+	char *str2;
+	clock_t timer;
+	double time_spent;
+	time_t t;
+	int b, i, num;
+
+
+//Report Problem #4 	
+	fp1 = fopen("TestProblems1.txt", "w");
+	for(b = 2010; b <= 2195; b+=5){
+		fprintf(fp1, "%s\n", "[1,5,10,25,50]");
+		fprintf(fp1, "%d\n", b);
+				
+	}
+	fprintf(fp1, "%s\n", "[1,5,10,25,50]");
+	fprintf(fp1, "%d", b);
+	
+	fclose(fp1);
+	
+	fp1 = fopen("TestProblems1.txt", "r");
+			int counter = 0;  // incrementer to work through file 
+		while(fgets(strng, 1000, fp1) != NULL){
+			if(counter % 2 == 0){
+				arr = arraySet(strng, count1);
+			}
+			else{
+				sscanf(strng, "%d", &num);
+				int	size = *count1-1;
+				int *B = (int*)malloc(sizeof(int)*size+1);
+				for(i = 0; i < *count1; i++){
+					
+					B[i] = 0;
+				}
+				timer = clock();
+				changedp(B, arr, num, size);
+				timer = clock() - timer; 
+				printf("changedp Time: %ld\n", timer);
+			}
+			counter++;
+		}
+	fclose(fp1);
+}
+
+void problem5(){
+	
+	//Report Problem #5 	
+	
+	char strng[1000];
+	FILE *fp1, *fp2, *fp3;
+	int *arr;
+	int count3;
+	int *count1 = &count3;
+	char *str2;
+	clock_t timer;
+	double time_spent;
+	time_t t;
+	int b, i, num;
+	
+	fp1 = fopen("TestProblems1.txt", "w");
+	for(b = 2000; b <= 2199; b++){
+		fprintf(fp1, "%s\n", "[1,2,6,12,24,48,60]");
+		fprintf(fp1, "%d\n", b);
+		fprintf(fp1, "%s\n", "[1,6,13,37,150]");
+		fprintf(fp1, "%d\n", b);
+				
+	}
+	fprintf(fp1, "%s\n", "[1,2,6,12,24,48,60]");
+	fprintf(fp1, "%d\n", b);
+	fprintf(fp1, "%s\n", "[1,6,13,37,150]");
+	fprintf(fp1, "%d", b);
+	
+	fclose(fp1);
+	
+	fp1 = fopen("TestProblems1.txt", "r");
+		int	counter = 0;  // incrementer to work through file 
+		while(fgets(strng, 1000, fp1) != NULL){
+			if(counter % 2 == 0){
+				arr = arraySet(strng, count1);
+			}
+			else{
+				sscanf(strng, "%d", &num);
+				int	size = *count1-1;
+				int *B = (int*)malloc(sizeof(int)*size+1);
+				for(i = 0; i < *count1; i++){
+					
+					B[i] = 0;
+				}
+				timer = clock();
+				changedp(B, arr, num, size);
+				timer = clock() - timer; 
+				printf("changedp Time: %ld\n", timer);
+			}
+			counter++;
+		}
+	fclose(fp1);
+	
+	
+}
+
+void problem6(){
+
+	
+	
+	char strng[1000];
+	FILE *fp1, *fp2, *fp3;
+	int *arr;
+	int count3;
+	int *count1 = &count3;
+	char *str2;
+	clock_t timer;
+	double time_spent;
+	time_t t;
+	int b, i, num;
+
+
+	fp1 = fopen("TestProblems1.txt", "w");
+	for(b = 2000; b <= 2199; b++){
+		fprintf(fp1, "%s\n", "[1,2,4,6,8,10,12,14,16,18]");
+		fprintf(fp1, "%d\n", b);
+				
+	}
+	fprintf(fp1, "%s\n", "[1,2,4,6,8,10,12,14,16,18]");
+	fprintf(fp1, "%d", b);
+	
+	fclose(fp1);
+	
+	fp1 = fopen("TestProblems1.txt", "r");
+			int counter = 0;  // incrementer to work through file 
+		while(fgets(strng, 1000, fp1) != NULL){
+			if(counter % 2 == 0){
+				arr = arraySet(strng, count1);
+			}
+			else{
+				sscanf(strng, "%d", &num);
+				int	size = *count1-1;
+				int *B = (int*)malloc(sizeof(int)*size+1);
+				for(i = 0; i < *count1; i++){
+					
+					B[i] = 0;
+				}
+				timer = clock();
+				changedp(B, arr, num, size);
+				timer = clock() - timer; 
+				printf("changedp Time: %ld\n", timer);
+				
+			}
+			
+			counter++;
+		}
+	fclose(fp1);
+
 }
