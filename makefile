@@ -1,6 +1,6 @@
 CFLAGS = -Wall -fpic -lm -std=c99 -w
 
-all: greedy.c dpchange.c changeslow.c
+all: greedy.c changedp.c changeslow.c
 	gcc -o greedy greedy.c $(CFLAGS)
 	./greedy testing.txt
 	gcc -o changedp changedp.c $(CFLAGS)
